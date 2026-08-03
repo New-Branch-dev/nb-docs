@@ -1,0 +1,115 @@
+/* ------------------------------------------------------------------
+ * New Branch 기술문서 - 전역 스타일
+ * 프론트엔드 서비스(vanilla-extract) 톤앤매너를 기술문서에도 동일하게 적용
+ * - 배경 #ffffff / 텍스트 #171717 기반의 미니멀한 흑백 톤
+ * - Arial/Helvetica 산세리프, 불필요한 장식 없이 여백과 타이포 위계로 구조를 표현
+ * ------------------------------------------------------------------ */
+
+:root {
+  --nb-background: #ffffff;
+  --nb-foreground: #171717;
+  --nb-gray-100: #f5f5f5;
+  --nb-gray-300: #e5e5e5;
+  --nb-gray-600: #737373;
+  --nb-gray-700: #525252;
+  --nb-accent: #2563eb; /* 링크/포인트에만 절제해서 사용 */
+  --nb-radius-sm: 4px;
+  --nb-radius-md: 8px;
+}
+
+html,
+body {
+  background: var(--nb-background);
+  color: var(--nb-foreground);
+  font-family:
+    Arial,
+    Helvetica,
+    -apple-system,
+    "Apple SD Gothic Neo",
+    "Pretendard",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 코드/기술 요소는 모노스페이스로 구분 */
+code,
+pre,
+kbd,
+samp {
+  font-family:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* 헤딩 위계: 굵기와 자간으로만 위계를 표현하고 색은 절제 */
+h1,
+h2,
+h3,
+h4 {
+  color: var(--nb-foreground);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  border-bottom: 1px solid var(--nb-gray-300);
+  padding-bottom: 0.5rem;
+}
+
+/* 링크는 accent 컬러 하나로만 절제해서 강조 */
+a {
+  color: var(--nb-accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* 얇은 구분선, 라운드 최소화 - 프론트 UI의 border 톤과 통일 */
+hr {
+  border: none;
+  border-top: 1px solid var(--nb-gray-300);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th,
+td {
+  border: 1px solid var(--nb-gray-300);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+th {
+  background: var(--nb-gray-100);
+  font-weight: 700;
+}
+
+blockquote {
+  border-left: 3px solid var(--nb-gray-300);
+  color: var(--nb-gray-700);
+  padding-left: 1rem;
+}
+
+/* 상태 배지: 문서 진행 상태를 표시할 때 사용 */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--nb-radius-sm);
+  border: 1px solid var(--nb-gray-300);
+  background: var(--nb-gray-100);
+  color: var(--nb-gray-700);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.status-badge[data-status="empty"] {
+  color: var(--nb-gray-600);
+}
+.status-badge[data-status="draft"] {
+  border-color: #fde68a;
+  background: #fffbeb;
+  color: #92400e;
+}

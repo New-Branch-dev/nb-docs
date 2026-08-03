@@ -1,0 +1,19 @@
+# 아키텍처 개요
+
+New Branch의 시스템 구조를 영역별로 정리합니다. 각 영역의 자세한 내용은
+하위 문서를 참고하세요.
+
+- [백엔드](/architecture/backend) — Spring Boot 기반 API 서버, 도메인 구조
+- [프론트엔드](/architecture/frontend) — Next.js 기반 웹 클라이언트, 폴더 구조
+- [데이터베이스](/architecture/database) — PostgreSQL 스키마 및 ERD
+- [인프라](/architecture/infra) — 배포/CI-CD 파이프라인, 컨테이너 구성
+
+## 전체 그림 (요약)
+
+```
+[Client (Next.js)] ──HTTP/JSON──> [API Server (Spring Boot)] ──JPA──> [PostgreSQL]
+                                          │
+                                          └── infra/ (S3, OpenAI, 텍스트 추출 등 외부 연동)
+```
+
+> 상세 다이어그램과 시퀀스는 각 하위 문서가 채워지는 대로 추가할 예정입니다.

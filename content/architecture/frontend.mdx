@@ -1,0 +1,122 @@
+# 프론트엔드
+
+[Next.js](https://nextjs.org/)(`create-next-app`)로 부트스트랩된 프로젝트이며,
+`next/font`로 [Geist](https://vercel.com/font) 폰트를 최적화해 사용합니다.
+
+## 시작하기
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+이후 [http://localhost:3000](http://localhost:3000)에서 확인할 수 있습니다.
+`app/page.tsx`를 수정하면 자동으로 반영됩니다.
+
+## 폴더 구조
+
+FSD(Feature-Sliced Design)와 유사한 계층 구조(`entities` / `features` /
+`shared` / `views` / `widgets`)에 Next.js App Router(`app`)를 결합한 구조입니다.
+
+```
+.github/
+  ISSUE_TEMPLATE/
+  PULL_REQUEST_TEMPLATE.md
+.vscode/
+docs/
+public/
+src/
+├── app/
+│   ├── (auth)/
+│   │   ├── redirect/
+│   │   ├── sign-in/
+│   │   ├── sign-up/
+│   │   └── layout.tsx
+│   ├── (contents)/
+│   │   ├── condensed-notes/
+│   │   ├── creative-activities/
+│   │   ├── deep-learning/
+│   │   ├── learning-goals/
+│   │   ├── my-learning/
+│   │   └── layout.tsx
+│   ├── (main)/
+│   │   ├── main/
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── api/schools/route.ts
+│   ├── globals.css
+│   └── layout.tsx
+├── entities/
+│   ├── learning-goals/
+│   │   ├── detail/ (lib / model / ui)
+│   │   ├── list/
+│   │   └── index.ts
+│   └── my-learning/ (api / ui / index.ts)
+├── features/
+├── shared/
+│   ├── hook/
+│   ├── lib/date/ (date-key.ts, index.ts)
+│   ├── styles/
+│   │   ├── colors.css.ts
+│   │   ├── flex.css.ts
+│   │   ├── theme.css.ts
+│   │   ├── typography.css.ts
+│   │   └── index.ts
+│   └── ui/
+│       ├── button/ checkbox/ chip-input-group/ chip/ container/
+│       ├── date-field/ date-picker/ icon/ input/ modal/
+│       ├── page-header/ search-bar/ section-card/ selector/
+│       ├── step-summary-panel/ stepper/ tab/ tag-input/ textarea/
+│       └── index.ts
+├── views/
+│   ├── auth/ (ui / index.ts)
+│   ├── learning-goals/ (lib / ui / index.ts)
+│   ├── main/ (model / ui / index.ts)
+│   ├── my-learning/ (lib / ui / index.ts)
+│   └── rending/
+└── widgets/
+    ├── footer/ui
+    ├── learning-step-layout/ (lib / ui / index.ts)
+    ├── navigation/
+    ├── sidebar/ (ui / index.ts)
+    ├── slider/
+    └── step-progress/
+.gitignore
+.prettierrc
+AGENTS.md
+CLAUDE.md
+README.md
+config.ts
+eslint.config.mjs
+next.config.ts
+package.json
+tsconfig.json
+```
+
+### 레이어 역할 (요약)
+
+| 레이어 | 역할 |
+| --- | --- |
+| `app` | 라우팅, 레이아웃, 라우트 그룹 (`(auth)`, `(contents)`, `(main)`) |
+| `views` | 페이지 단위 조립 (여러 entities/features/widgets 조합) |
+| `widgets` | 여러 화면에서 재사용되는 큰 단위 UI (사이드바, 네비게이션 등) |
+| `entities` | 도메인 데이터 모델과 관련 UI/로직 |
+| `features` | 사용자 행동 단위 기능 |
+| `shared` | 공통 UI 컴포넌트, 스타일 토큰, 유틸 |
+
+### 스타일링
+
+- `@vanilla-extract/css` 기반의 CSS-in-TS
+- `shared/styles`에 컬러/타이포그래피/여백 등 디자인 토큰을 정의하고
+  전역에서 재사용
+
+## 배포
+
+Vercel Platform을 통해 배포합니다. 자세한 내용은
+[Next.js 배포 문서](https://nextjs.org/docs/app/building-your-application/deploying)를
+참고하세요.

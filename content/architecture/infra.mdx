@@ -1,0 +1,35 @@
+import { Callout } from "nextra/components";
+
+# 인프라
+
+## 현재 구성
+
+- **컨테이너화**: Docker & Docker Compose (로컬 개발용 PostgreSQL 포함)
+- **이미지 배포**: GitHub Actions → Docker Hub
+  - `main` 브랜치 push 시 자동으로 이미지 빌드 및 푸시
+  - 태그 전략: `latest` / `main-<커밋해시>` / `main`
+- **CI**: Pull Request 생성/업데이트 시 Gradle 빌드 자동 검증
+- **프론트엔드/문서 배포**: Vercel
+
+<Callout type="warning">
+  실제 운영 서버(클라우드/도메인/모니터링 등) 인프라 구성은 아직 확정되지
+  않았습니다. 구조만 잡아둔 페이지로, 결정되는 대로 내용을 채웁니다.
+</Callout>
+
+## 목차 (예정)
+
+### 배포 환경
+
+_추후 작성 예정_ (예: 클라우드 제공자, 리전, 서버 구성)
+
+### 네트워크 / 도메인
+
+_추후 작성 예정_
+
+### 모니터링 / 로깅
+
+_추후 작성 예정_
+
+### 시크릿 / 환경변수 관리
+
+_추후 작성 예정_
